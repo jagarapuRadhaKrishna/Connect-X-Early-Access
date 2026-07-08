@@ -1,0 +1,287 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-white/10;
+  }
+
+  input, button, select, textarea {
+    @apply border-white/10;
+  }
+
+  input[type="checkbox"] {
+    appearance: auto;
+    -webkit-appearance: checkbox;
+    accent-color: #ff2b3a;
+  }
+  
+  body {
+    @apply bg-background text-text-primary antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-surface/80 backdrop-blur-md border border-white/10;
+  }
+  
+  .glass-dark {
+    @apply bg-background/80 backdrop-blur-md border border-white/5;
+  }
+  
+  .gradient-primary {
+    @apply bg-gradient-to-r from-primary to-primary-dark;
+  }
+  
+  .gradient-accent {
+    @apply bg-gradient-to-r from-accent to-accent-dark;
+  }
+  
+  .card {
+    @apply bg-surface rounded-2xl border border-white/10 shadow-xl;
+  }
+  
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+  }
+  
+  .btn-secondary {
+    @apply bg-surface hover:bg-surface-light text-text-primary font-semibold py-3 px-6 rounded-xl border border-white/10 transition-all duration-200;
+  }
+  
+  .input-field {
+    @apply w-full bg-background border border-white/10 rounded-xl px-4 py-3 text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/30 transition-all duration-200;
+  }
+
+  .select-field {
+    @apply w-full bg-background border border-white/10 rounded-xl px-4 py-3 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/30 transition-all duration-200 cursor-pointer appearance-none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394A3B8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-position: right 1rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+  }
+
+  .select-field:hover {
+    @apply border-white/20;
+  }
+
+  .select-field option {
+    @apply bg-background text-text-primary;
+  }
+
+  .select-field option:checked {
+    @apply bg-primary text-white;
+  }
+
+  .select-field option:hover {
+    @apply bg-primary/20;
+  }
+
+  .radio-group {
+    @apply flex flex-wrap gap-4;
+  }
+
+  .radio-option {
+    @apply relative;
+  }
+
+  .radio-option input[type="radio"] {
+    @apply sr-only;
+  }
+
+  .radio-option label {
+    @apply flex items-center gap-2 px-4 py-2 rounded-lg border border-white/10 bg-background cursor-pointer transition-all duration-200 hover:border-primary/30 hover:bg-primary/5;
+  }
+
+  .radio-option input[type="radio"]:checked + label {
+    @apply border-primary bg-primary/10 text-primary;
+  }
+
+  .radio-option input[type="radio"]:focus + label {
+    @apply ring-2 ring-primary/50;
+  }
+
+  .checkbox-wrapper {
+    @apply relative;
+  }
+
+  .checkbox-wrapper input[type="checkbox"] {
+    @apply sr-only;
+  }
+
+  .checkbox-wrapper label {
+    @apply flex items-start gap-3 p-4 bg-surface rounded-xl border border-white/10 cursor-pointer transition-all duration-200 hover:border-primary/30 hover:bg-primary/5;
+  }
+
+  .checkbox-wrapper input[type="checkbox"]:checked + label {
+    @apply border-primary bg-primary/10;
+  }
+
+  .checkbox-wrapper input[type="checkbox"]:focus + label {
+    @apply ring-2 ring-primary/50;
+  }
+
+  .checkbox-custom {
+    @apply w-5 h-5 border-2 border-white/30 rounded flex items-center justify-center transition-all duration-200 flex-shrink-0 mt-0.5;
+  }
+
+  .checkbox-wrapper input[type="checkbox"]:checked + label .checkbox-custom {
+    @apply border-primary bg-primary;
+  }
+
+  .checkbox-custom-icon {
+    @apply text-white opacity-0 transition-opacity duration-200;
+  }
+
+  .checkbox-wrapper input[type="checkbox"]:checked + label .checkbox-custom-icon {
+    @apply opacity-100;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animate-in {
+    animation: fadeIn 0.5s ease-in;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-surface-light rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-text-muted;
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton {
+  @apply animate-pulse bg-surface-light;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+.premium-cta-banner {
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 58% 50%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.08) 9%, transparent 25%),
+    radial-gradient(circle at 86% 48%, rgba(255, 0, 60, 0.38) 0%, rgba(255, 0, 60, 0.14) 29%, transparent 62%),
+    radial-gradient(circle at 14% 38%, rgba(255, 110, 118, 0.18) 0%, transparent 36%),
+    linear-gradient(135deg, rgba(0, 0, 0, 0.45) 0%, transparent 42%, rgba(255, 255, 255, 0.06) 53%, transparent 64%),
+    linear-gradient(135deg, #4b050b 0%, #8b0a14 28%, #d10f20 58%, #ff2b3a 100%);
+  background-blend-mode: screen, screen, soft-light, overlay, normal;
+}
+
+.premium-cta-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), transparent 22%),
+    radial-gradient(ellipse at center, transparent 42%, rgba(0, 0, 0, 0.45) 100%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 18%, transparent 72%, rgba(255, 96, 106, 0.16) 100%);
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.premium-cta-banner::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -42px 70px rgba(0, 0, 0, 0.24),
+    inset 0 0 42px rgba(255, 58, 72, 0.16);
+}
+
+.premium-cta-streaks {
+  z-index: 0;
+  opacity: 0.78;
+  background:
+    linear-gradient(135deg, transparent 8%, rgba(255, 255, 255, 0.08) 9%, transparent 10%),
+    linear-gradient(135deg, transparent 18%, rgba(255, 255, 255, 0.11) 19%, transparent 20.5%),
+    linear-gradient(135deg, transparent 28%, rgba(255, 78, 91, 0.2) 29%, transparent 31%),
+    linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.06) 41%, transparent 42%),
+    linear-gradient(135deg, transparent 52%, rgba(255, 255, 255, 0.12) 53%, transparent 54%),
+    linear-gradient(135deg, transparent 63%, rgba(255, 60, 72, 0.18) 64.5%, transparent 66%),
+    linear-gradient(135deg, transparent 75%, rgba(255, 255, 255, 0.08) 76%, transparent 77%),
+    linear-gradient(135deg, transparent 84%, rgba(255, 112, 122, 0.2) 85%, transparent 87%);
+  background-size: 160% 160%, 130% 130%, 180% 180%, 115% 115%, 175% 175%, 150% 150%, 120% 120%, 190% 190%;
+  filter: blur(0.65px);
+  mix-blend-mode: screen;
+  animation: ctaStreakShift 12s ease-in-out infinite alternate;
+}
+
+.premium-cta-corner-lines {
+  z-index: 1;
+  background:
+    linear-gradient(130deg, transparent 70%, rgba(255, 28, 44, 0.55) 71%, rgba(255, 140, 150, 0.7) 71.4%, transparent 73%),
+    linear-gradient(130deg, transparent 77%, rgba(255, 28, 44, 0.45) 78.2%, transparent 80%),
+    linear-gradient(130deg, transparent 84%, rgba(255, 255, 255, 0.18) 85%, rgba(255, 28, 44, 0.4) 86%, transparent 88%),
+    radial-gradient(circle at 92% 52%, rgba(255, 0, 48, 0.22), transparent 34%);
+  filter: drop-shadow(0 0 18px rgba(255, 38, 58, 0.42));
+  mix-blend-mode: screen;
+  animation: ctaCornerPulse 5.5s ease-in-out infinite alternate;
+}
+
+@keyframes ctaStreakShift {
+  from {
+    background-position: 0% 0%, 10% 0%, 0% 30%, 0% 0%, 20% 10%, 0% 0%, 0% 20%, 8% 0%;
+  }
+  to {
+    background-position: 16% 12%, 0% 18%, 18% 0%, 12% 6%, 0% 22%, 18% 12%, 10% 0%, 0% 18%;
+  }
+}
+
+@keyframes ctaCornerPulse {
+  from {
+    opacity: 0.72;
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+  to {
+    opacity: 1;
+    background-position: 18px -10px, 10px -8px, 24px -14px, 0 0;
+  }
+}
